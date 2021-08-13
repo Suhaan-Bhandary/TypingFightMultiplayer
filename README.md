@@ -1,22 +1,16 @@
-
 # TypingFightMultiplayer
 
 A Multiplayer Typing Game for playing with friends and also helpful for increasing the typing speed.
+Try it on https://typing-fight.glitch.me
 
-## Authors
+## Author
 
 - [@Suhaan-Bhandary](https://github.com/Suhaan-Bhandary)
 
-  
-# TypingFightMultiplayer
-
-A Multiplayer Typing Game for playing with friends and also helpful for increasing the typing speed.
-
 ## Demo
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/ZtzAwBzKE7c/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
 
-  
 ## Run Locally
 
 Clone the project
@@ -48,40 +42,41 @@ Finally try it in a Browser !
 ```bash
   Open http://localhost:3000/ on any Browser
 ```
+
 ## API Reference
 
 Api Used : https://api.chucknorris.io
 
-#### Get Random Line
+### Get Random Line
 
 ```http
   GET /jokes/random
 ```
 
-#### Get item with specified category
+### Get item with specified category
 
 ```http
   GET /jokes/random?category=${randomCategory}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `randomCategory`      | `List of Strings` | List of Category to chose from of item to fetch |
+| Parameter        | Type              | Description                                     |
+| :--------------- | :---------------- | :---------------------------------------------- |
+| `randomCategory` | `List of Strings` | List of Category to chose from of item to fetch |
 
 ```javascript
 const apiUrl = `https://api.chucknorris.io/jokes/random?category=${randomCategory}`;
 fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      return data.value;
-    })
-    .catch((err) => {
-      console.error(err.message);
-    });
+  .then((response) => response.json())
+  .then((data) => {
+    return data.value;
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
 ```
 
 Fetches a random joke from the specified category list.
-  
+
 ## Tech Stack
 
 **Client:** HTML, CSS, VanilaJS, Scoket-io
@@ -89,5 +84,3 @@ Fetches a random joke from the specified category list.
 **Server:** Node, Express, ScoketIO
 
 **Server Dev Dependencies:** nodemon
-
-  
