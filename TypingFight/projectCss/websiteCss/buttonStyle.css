@@ -1,0 +1,124 @@
+/* Css of the button as it used it two places so a separate css file. */
+
+.custom-btn
+{
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 130px;
+    height: 40px;
+    padding: 10px 25px;
+
+    cursor: pointer;
+    transition: all .3s ease;
+
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    box-shadow: inset 2px 2px 2px 0 rgba(255, 255, 255, .5),
+    7px 7px 20px 0 rgba(0, 0, 0, .1), 4px 4px 5px 0 rgba(0, 0, 0, .1);
+}
+
+.custom-btn:disabled,
+.custom-btn[disabled]
+{
+    color: #666;
+    background: linear-gradient(214deg, #ccc 0%, #ccc 100%);
+    background-color: #ccc;
+}
+
+.btn-11
+{
+    overflow: hidden;
+
+    color: #fff;
+    border: none;
+    background: rgb(251, 33, 117);
+    background: linear-gradient(
+    214deg,
+    rgb(9 242 255 / 66%) 0%,
+    rgb(0 138 255) 100%
+    );
+}
+
+.btn-11:hover
+{
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.btn-11:before
+{
+    position: absolute;
+    top: -180px;
+    left: 0;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 100%;
+
+    content: '';
+    animation: shiny-btn1 3s ease-in-out infinite;
+
+    background-color: #fff;
+}
+
+.btn-11:hover
+{
+    opacity: .8;
+}
+
+.btn-11:active
+{
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3),
+    -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+@keyframes shiny-btn1
+{
+    0%
+    {
+        -webkit-transform: scale(0) rotate(45deg);
+
+        opacity: 0;
+    }
+
+    80%
+    {
+        -webkit-transform: scale(0) rotate(45deg);
+
+        opacity: .5;
+    }
+
+    81%
+    {
+        -webkit-transform: scale(4) rotate(45deg);
+
+        opacity: 1;
+    }
+
+    100%
+    {
+        -webkit-transform: scale(50) rotate(45deg);
+
+        opacity: 0;
+    }
+}
+
+/* For responsiveness */
+@media (max-width: 780px)
+{
+    button
+    {
+        margin: 10px;
+    }
+}

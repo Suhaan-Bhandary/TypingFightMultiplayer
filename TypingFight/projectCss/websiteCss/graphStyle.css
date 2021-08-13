@@ -1,0 +1,41 @@
+/* css file for the graph container. */
+.graphContainer
+{
+    display: none;
+    flex-direction: column;
+
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 20px;
+
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+
+    justify-content: center;
+    align-items: center;
+}
+
+canvas#myChart
+{
+    display: block;
+
+    box-sizing: border-box;
+    width: 90%;
+    min-height: 80vh;
+    max-height: 80vh;
+}
+
+/* For responsiveness */
+@media (max-width: 780px)
+{
+    canvas#myChart
+    {
+        display: block;
+
+        box-sizing: border-box;
+        width: 90%;
+        min-height: 50vh;
+        max-height: 100vh;
+    }
+}

@@ -1,0 +1,207 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.chatRoom {
+  font-family: "Roboto", sans-serif;
+
+  position: fixed;
+  z-index: 500;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+
+  background: #f8f8f8;
+
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+section.chatSection {
+  width: 800px;
+  max-width: 90%;
+
+  background: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.brand {
+  position: relative;
+
+  display: flex;
+
+  padding: 20px;
+
+  background: #f1f1f1;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.brand h2 {
+  font-size: 20px;
+
+  margin: 0 10px;
+
+  text-transform: uppercase;
+
+  color: #444;
+}
+
+#leaveIcon {
+  font-size: 20px;
+
+  position: absolute;
+  right: 10px;
+
+  cursor: pointer;
+}
+
+.messageArea {
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  /* height: 500px; */
+
+  height: 75vh;
+  padding: 16px;
+  padding: 20px 20px;
+}
+
+form#messageForm {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  font-size: 16px;
+
+  width: 100%;
+  padding: 20px;
+
+  border: none;
+  outline: none;
+  background-color: #fbfbfb;
+}
+
+button#sendMessage {
+  width: 90px;
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.message {
+  position: relative;
+
+  max-width: 300px;
+  margin-bottom: 40px;
+  padding: 10px 20px;
+
+  border-radius: 4px;
+}
+
+.btn-12 {
+  overflow: hidden;
+
+  color: #fff;
+  border: none;
+  background: rgb(251, 33, 117);
+  background: linear-gradient(0deg, rgb(98 149 245) 0%, rgb(98 149 245) 100%);
+}
+
+i.fas.fa-paper-plane {
+  font-size: 20px;
+}
+
+.message p {
+  text-align: left;
+  word-wrap: break-word;
+
+  color: #000;
+}
+
+.incoming {
+  margin-right: auto;
+
+  color: #fff;
+  border-radius: 20px 20px 20px 0;
+  background-color: #a8ece8b0;
+}
+
+.outgoing {
+  margin-bottom: 20px;
+  margin-left: auto;
+
+  color: #787986;
+  border-radius: 20px 20px 0 20px;
+  background-color: #e9eafd;
+}
+
+.message h4 {
+  font-size: 14px;
+
+  position: absolute;
+  top: -20px;
+  left: 0;
+
+  color: #333;
+}
+
+#startGameButton {
+  display: none;
+
+  margin: 0 10px 0 0;
+}
+
+.chatSvg {
+  position: absolute;
+
+  width: 50%;
+  height: 80%;
+
+  transition: 1s;
+  pointer-events: none;
+}
+
+.hide {
+  opacity: 0;
+}
+
+/* here we are managing the kick from room */
+div#roomNameNumber {
+  overflow: hidden;
+
+  height: 20px;
+  padding: 0 10px 10px 10px;
+
+  cursor: pointer;
+  transition: 1s;
+}
+
+div#roomNameNumber:hover {
+  overflow: visible;
+}
+
+div#roomNameNumber div {
+  height: 20px;
+  padding: 5px;
+
+  background: #fff;
+}
+
+div#roomNameNumber div:hover {
+  text-decoration: underline;
+}

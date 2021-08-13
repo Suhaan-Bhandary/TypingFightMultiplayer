@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Fight | Play and Learn</title>
+
+    <!-- Description meta tags -->
+    <meta
+      name="description"
+      content="This is a Multiplayer Typing games to play and practice."
+    />
+
+    <!-- Keywords : Its not much important as google searches keywords by itself -->
+    <meta
+      name="keywords"
+      content="typing,learning,Multiplayer,gaming,games,fast,enjoying"
+    />
+
+    <!-- Robots Tag : we are saying or giving permission to crawl -->
+    <!-- no index to crawl -->
+    <meta name="robots" content="index,follow" />
+
+    <link
+      rel="icon"
+      href="./projectAsset/backgroundImages/favicon.png"
+      type="image/png"
+    />
+
+    <!--  ? All external links : -->
+    <!-- * 1 : Font awesome fonts link -->
+    <script
+      src="https://kit.fontawesome.com/aefdb4fe4a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 2 : down -->
+
+    <!-- ? All Internal links and Scripts -->
+    <!-- 0 : Client side server setup -->
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="./projectScripts/clientSideScript.js"></script>
+    <link rel="stylesheet" href="./projectCss/websiteCss/default.css" />
+
+    <!-- 1 : selectionMenuContainer -->
+    <link
+      rel="stylesheet"
+      href="./projectCss/websiteCss/selectionMenuStyle.css"
+    />
+    <link rel="stylesheet" href="./projectCss/websiteCss/buttonStyle.css" />
+    <script defer src="./projectScripts/selectionMenuScript.js"></script>
+
+    <!-- 2 : Chat Room : -->
+    <link rel="stylesheet" href="./projectCss/websiteCss/chatRoom.css" />
+
+    <!-- 3 : Message popUpControl -->
+    <link rel="stylesheet" href="./projectCss/websiteCss/messagePopUp.css" />
+
+    <!-- 5 : graphGeneration :  -->
+    <link rel="stylesheet" href="./projectCss/websiteCss/graphStyle.css" />
+
+    <!-- 6 : mainContainer -->
+    <script defer src="./projectScripts/mainContainerScript.js"></script>
+    <link
+      rel="stylesheet"
+      href="./projectCss/websiteCss/mainContainerStyle.css"
+    />
+
+    <!-- 7 : countdown -->
+    <link
+      rel="stylesheet"
+      href="./projectCss/websiteCss/countdownContainerStyle.css"
+    />
+  </head>
+
+  <body>
+    <!-- The below div is the selectionMenu div in which you can host or join a game -->
+    <div class="selectionMenuContainer">
+      <div class="typingSvg" id="typingSvg"></div>
+      <!-- No script works when script is disabled-->
+      <noscript>Please enable JavaScript</noscript>
+
+      <h3>Typing Fight <small style="font-size: 20px">SR-Bhandary</small></h3>
+      <p>
+        Please use physical keyboard for typing use mobile keyboard as it may
+        cause some issues.
+      </p>
+
+      <div class="buttonContainer">
+        <button class="custom-btn btn-11" id="hostButton">Host</button>
+        <button class="custom-btn btn-11" id="joinButton">Join</button>
+      </div>
+    </div>
+
+    <!-- Message popUpControl and popup -->
+    <div class="togglePopUp">
+      <input type="checkbox" checked id="popUpControl" />
+    </div>
+    <div class="messagePopUp"></div>
+
+    <!-- It is used to display the countdown before the game starts.  -->
+    <div class="countDownContainer">
+      <h1 class="countDown">Here Comes the Countdown</h1>
+    </div>
+
+    <!-- It is the container in which we will be typing -->
+    <div class="mainContainer">
+      <div class="svg" id="svg"></div>
+
+      <div class="sentence"></div>
+
+      <div class="myTyping">
+        <textarea
+          id="myTyping"
+          rows="1"
+          placeholder="Start Typing..."
+        ></textarea>
+      </div>
+
+      <div class="counterContainer">
+        <div class="wrongCounter"></div>
+      </div>
+
+      <div class="endDisplay"></div>
+    </div>
+
+    <!-- Graph Container -->
+    <div class="graphContainer">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- The below div is the Chat Room  -->
+    <div class="chatRoom">
+      <!-- In finish Animation js file -->
+      <div class="chatSvg" id="chatSvg"></div>
+
+      <section class="chatSection">
+        <div class="brand">
+          <h2 class="roomName">New Chat Room</h2>
+          <div id="roomNameNumber"></div>
+          <div id="leaveIcon"><i class="fas fa-sign-out-alt"></i></div>
+        </div>
+
+        <div class="messageArea"></div>
+
+        <form id="messageForm">
+          <input type="text" placeholder="Message" id="message" />
+          <button type="submit" id="sendMessage" class="custom-btn btn-12">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+          <button
+            class="custom-btn btn-11"
+            onclick="startTheGame();"
+            id="startGameButton"
+          >
+            Start
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <!-- To optimize we have to keep some script at last -->
+    <!-- * 2 : Chart js link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+      integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- * 3 : Littie animation link -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.8/lottie.min.js"
+      integrity="sha512-w58XJ/0dVbEfZVJoJyBUOTMGBWmIW4jEYJSA0898d2L0Ghpum0FvwK7qTuHhkTctApzrchv3Neli+28ajI4+fg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- 4 : TextGeneration -->
+    <script src="./projectScripts/textGenerationScript.js"></script>
+    <!-- 5 : graphGeneration :  -->
+    <script src="./projectScripts/graphGeneratorScript.js"></script>
+
+    <!-- 8 : confettie effect -->
+    <script src="./projectScripts/finishAnimation.js"></script>
+    <!-- the css of this confettie is in the mainContainerStyle -->
+  </body>
+</html>
