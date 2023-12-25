@@ -1,9 +1,25 @@
 const hostButton = document.getElementById('hostButton');
 const joinButton = document.getElementById('joinButton');
 
-hostButton.addEventListener('click', () => hostAGame());
+hostButton.addEventListener('click', () => {
+  if (!playerName) {
+    openNameModal();
+  } else {
+    hostAGame();
+  }
+});
 
-joinButton.addEventListener('click', () => joinAGame());
+joinButton.addEventListener('click', () => {
+  if (!playerName) {
+    openNameModal();
+    return;
+  }
+
+  if (!roomName) {
+    openRoomModal();
+    return;
+  }
+});
 
 const svgContainerTyping = document.getElementById('typingSvg');
 

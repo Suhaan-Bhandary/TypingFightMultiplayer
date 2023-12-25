@@ -23,10 +23,6 @@ const startGameButton = document.querySelector('#startGameButton');
 
 // * Room Manager :
 const hostAGame = () => {
-  // Taking input and storing it in a cookie.
-  while (!playerName) playerName = prompt('Enter your name : ');
-  document.cookie = `name=${playerName}`;
-
   roomName = playerName + '-' + playerName.length;
 
   // ? Important to host.
@@ -44,11 +40,6 @@ const hostAGame = () => {
 };
 
 const joinAGame = () => {
-  while (!playerName) playerName = prompt('Enter your name : ');
-  document.cookie = `name=${playerName}`;
-
-  while (!roomName) roomName = prompt('Enter room name : ');
-
   // ? Important to join.
   socket.emit('joiningAGame', roomName, playerName, socket.id);
 };
@@ -64,17 +55,17 @@ socket.on('roomExists', () => {
 });
 
 socket.on('gameInProgress', () => {
-  alert('Game in progress.');
+  openErrorModal('Game in progress.');
   roomName = '';
 });
 
 socket.on('roomNotExists', () => {
-  alert('Room not available.');
+  openErrorModal('Room not available.');
   roomName = '';
 });
 
 socket.on('playerAlreadyJoined', () =>
-  alert('Player is already joined in the group.'),
+  openErrorModal('Player is already joined in the group.'),
 );
 
 socket.on('set-room-data', (playersInRoom) => {
@@ -108,7 +99,7 @@ socket.on('set-room-data', (playersInRoom) => {
 
 // * on kick
 socket.on('onKick', () => {
-  alert('Your are kicked by the host :( ');
+  openErrorModal('Your are kicked by the host :( ');
   location.reload();
 });
 

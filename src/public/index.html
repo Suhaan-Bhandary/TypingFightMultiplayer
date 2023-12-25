@@ -59,6 +59,9 @@
 
     <!-- 7 : countdown -->
     <link rel="stylesheet" href="./css/countdownContainerStyle.css" />
+
+    <!-- 8: Modal css -->
+    <link rel="stylesheet" href="./css/modal.css" />
   </head>
 
   <body>
@@ -147,6 +150,58 @@
       </section>
     </div>
 
+    <!-- PopUp for Name Input -->
+    <div class="Modal" id="NameModal">
+      <div class="container">
+        <h1 class="title">Enter your username, before Playing!!</h1>
+        <div class="form">
+          <div class="inputField">
+            <input type="text" placeholder="Username" id="nameModalInput" />
+            <span
+              id="nameModalErrorMessage"
+              style="color: red; font-size: 1rem"
+            ></span>
+          </div>
+          <div class="buttons">
+            <button class="continueButton" id="nameModalSaveButton">
+              Save
+            </button>
+            <button class="backButton" id="nameModalCloseButton">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PopUp for Room Input -->
+    <div class="Modal" id="RoomModal">
+      <div class="container">
+        <h1 class="title">Enter Room to Join</h1>
+        <div class="form">
+          <div class="inputField">
+            <input type="text" placeholder="Room" id="roomModalInput" />
+          </div>
+          <div class="buttons">
+            <button class="continueButton" id="roomModalSaveButton">
+              Join
+            </button>
+            <button class="backButton" id="roomModalCloseButton">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PopUp for Error Message -->
+    <div class="Modal" id="ErrorModal">
+      <div class="container">
+        <h1 class="title error" id="error-modal-message">Enter Room to Join</h1>
+        <div class="buttons">
+          <button class="backButton shrink" id="errorModalCloseButton">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- To optimize we have to keep some script at last -->
     <!-- * 2 : Chart js link -->
     <script
@@ -171,6 +226,8 @@
 
     <!-- 8 : confettie effect -->
     <script src="./js/UI/confettieEffect.js"></script>
+
+    <script src="./js/modalsControl.js"></script>
     <!-- the css of this confettie is in the mainContainerStyle -->
   </body>
 </html>
