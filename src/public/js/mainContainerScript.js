@@ -1,12 +1,12 @@
 // Grabbing all the required elements.
-const sentence = document.querySelector(".sentence");
-const wrongCounter = document.querySelector(".wrongCounter");
-const textInput = document.querySelector("#myTyping");
-const endDisplay = document.querySelector(".endDisplay");
-const againButton = document.querySelector("#again");
+const sentence = document.querySelector('.sentence');
+const wrongCounter = document.querySelector('.wrongCounter');
+const textInput = document.querySelector('#myTyping');
+const endDisplay = document.querySelector('.endDisplay');
+const againButton = document.querySelector('#again');
 
 // Variables used :
-let sentenceText = "";
+let sentenceText = '';
 
 // All this are changed when we restart the game.
 let backSpacesRequired = 0, // To keep track of the wrong letters typed.
@@ -31,18 +31,18 @@ let PlayerData,
   onRestartCondition();
 
   // Initializing the event listener for key events.
-  textInput.addEventListener("keydown", (e) => {
+  textInput.addEventListener('keydown', (e) => {
     // if (!typingStarted) typingStartedCondition(); // Condtion to check if Typing is Started.
 
     // Function to check if the key pressed is right or wrong and perform further actions.
     checkKeyCondition(e);
 
     // Checking if the word ended and also all the previous words are correctly typed.
-    if (e.key == " " && backSpacesRequired === 0) {
+    if (e.key == ' ' && backSpacesRequired === 0) {
       recordGraphData(); // Records the data for every word in the graph.
 
       // Reseting the textInput and also the current word.
-      textInput.value = "";
+      textInput.value = '';
       currentWordTyping = [];
     }
 
@@ -66,10 +66,10 @@ function onRestartCondition() {
   errorFreeFlag = true;
 
   // Changing the Html and css of the elements
-  endDisplay.style.display = "none";
+  endDisplay.style.display = 'none';
   sentence.innerHTML = `<h1>${sentenceText}</h1>`;
-  textInput.style.display = "block";
-  textInput.value = "";
+  textInput.style.display = 'block';
+  textInput.value = '';
 
   refreshWindow();
 }
@@ -83,7 +83,7 @@ function refreshWindow() {
     rightText = sentenceText.slice(0, letterCount);
 
     if (letterCount == sentenceText.length) {
-      currentText = "";
+      currentText = '';
     } else {
       currentText = sentenceText[letterCount];
     }
@@ -95,7 +95,7 @@ function refreshWindow() {
 
     wrongText = sentenceText.slice(
       letterCount,
-      letterCount + backSpacesRequired
+      letterCount + backSpacesRequired,
     );
     remainingText = sentenceText.slice(letterCount + backSpacesRequired);
     sentence.innerHTML = `<h1><span id="right" >${rightText}</span><span id="wrong" >${wrongText}</span><span id="remaining" >${remainingText}</span></h1>`;
@@ -107,7 +107,7 @@ function typingStartedCondition() {
   startTime = new Date();
   previousTime = startTime;
 
-  console.log("Started typing");
+  console.log('Started typing');
   typingStarted = true;
 
   // const chatRoom = document.querySelector(".chatRoom");
@@ -146,17 +146,17 @@ function correctKeyConditionHandle() {
 function wrongKeyConditionHandle(e) {
   letterTyped = e.key;
 
-  if (letterTyped == "Backspace") {
+  if (letterTyped == 'Backspace') {
     currentWordTyping.pop();
     backScpaceConditionHandle();
 
     if (e.ctrlKey) deleteWholeWord();
   } else if (
-    letterTyped == "Control" ||
-    letterTyped == "Shift" ||
-    letterTyped == "CapsLock" ||
-    letterTyped == "Enter" ||
-    letterTyped == "Tab"
+    letterTyped == 'Control' ||
+    letterTyped == 'Shift' ||
+    letterTyped == 'CapsLock' ||
+    letterTyped == 'Enter' ||
+    letterTyped == 'Tab'
   ) {
     return;
   } else {
@@ -183,11 +183,11 @@ function backScpaceConditionHandle() {
 // Delets the whole word when called.
 function deleteWholeWord() {
   let wordLengthToDelete =
-    currentWordTyping.length - currentWordTyping.lastIndexOf(" ");
+    currentWordTyping.length - currentWordTyping.lastIndexOf(' ');
 
   let newWord = currentWordTyping
     .slice(0, currentWordTyping.length - wordLengthToDelete + 1)
-    .join("");
+    .join('');
 
   letterCount = letterCount - (currentWordTyping.length - backSpacesRequired);
   index = letterCount;
@@ -200,7 +200,7 @@ function deleteWholeWord() {
     errorFreeFlag = false;
   }
 
-  currentWordTyping = newWord.split("");
+  currentWordTyping = newWord.split('');
 }
 
 // Function handel the state if the function is called.
@@ -212,7 +212,7 @@ function regularWrongConditionHandle() {
 
 // Function to handel the case when typing is started.
 function endCondition() {
-  console.log("hi every one");
+  console.log('hi every one');
   endTime = new Date();
 
   // Recording the last word and then generation the graphdata using the graphdata variable.
@@ -225,8 +225,8 @@ function endCondition() {
   let rawSpeed = (letterCount + wrongCount) / (5 * timePassedInMinutes);
   let accuracy = 100 - (wrongCount / (letterCount + wrongCount)) * 100;
 
-  endDisplay.style.display = "block"; // Displaying the endDisplay.
-  textInput.style.display = "none"; // Hiding the text input.
+  endDisplay.style.display = 'block'; // Displaying the endDisplay.
+  textInput.style.display = 'none'; // Hiding the text input.
 
   animItem.goToAndPlay(0, true); // to play the animation.
 
@@ -237,6 +237,6 @@ function endCondition() {
     <p>${typingSpeedCompare[Math.floor(typingSpeed / 10) * 10]}</p>
     `;
 
-  window.scrollTo(0, document.querySelector(".graphContainer").scrollHeight);
+  window.scrollTo(0, document.querySelector('.graphContainer').scrollHeight);
   generateGraph(typingSpeed.toFixed(0), accuracy.toFixed(2));
 }

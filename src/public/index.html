@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,11 +22,7 @@
     <!-- no index to crawl -->
     <meta name="robots" content="index,follow" />
 
-    <link
-      rel="icon"
-      href="./projectAsset/backgroundImages/favicon.png"
-      type="image/png"
-    />
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
 
     <!--  ? All external links : -->
     <!-- * 1 : Font awesome fonts link -->
@@ -39,39 +35,30 @@
 
     <!-- ? All Internal links and Scripts -->
     <!-- 0 : Client side server setup -->
-    <script defer src="/socket.io/socket.io.js"></script>
-    <script defer src="./projectScripts/clientSideScript.js"></script>
-    <link rel="stylesheet" href="./projectCss/websiteCss/default.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="./js/clientSideScript.js"></script>
+    <link rel="stylesheet" href="./css/default.css" />
 
     <!-- 1 : selectionMenuContainer -->
-    <link
-      rel="stylesheet"
-      href="./projectCss/websiteCss/selectionMenuStyle.css"
-    />
-    <link rel="stylesheet" href="./projectCss/websiteCss/buttonStyle.css" />
-    <script defer src="./projectScripts/selectionMenuScript.js"></script>
+    <link rel="stylesheet" href="./css/selectionMenuStyle.css" />
+    <link rel="stylesheet" href="./css/buttonStyle.css" />
+    <script defer src="./js/selectionMenuScript.js"></script>
 
     <!-- 2 : Chat Room : -->
-    <link rel="stylesheet" href="./projectCss/websiteCss/chatRoom.css" />
+    <link rel="stylesheet" href="./css/chatRoom.css" />
 
     <!-- 3 : Message popUpControl -->
-    <link rel="stylesheet" href="./projectCss/websiteCss/messagePopUp.css" />
+    <link rel="stylesheet" href="./css/messagePopUp.css" />
 
     <!-- 5 : graphGeneration :  -->
-    <link rel="stylesheet" href="./projectCss/websiteCss/graphStyle.css" />
+    <link rel="stylesheet" href="./css/graphStyle.css" />
 
     <!-- 6 : mainContainer -->
-    <script defer src="./projectScripts/mainContainerScript.js"></script>
-    <link
-      rel="stylesheet"
-      href="./projectCss/websiteCss/mainContainerStyle.css"
-    />
+    <script defer src="./js/mainContainerScript.js"></script>
+    <link rel="stylesheet" href="./css/mainContainerStyle.css" />
 
     <!-- 7 : countdown -->
-    <link
-      rel="stylesheet"
-      href="./projectCss/websiteCss/countdownContainerStyle.css"
-    />
+    <link rel="stylesheet" href="./css/countdownContainerStyle.css" />
   </head>
 
   <body>
@@ -177,12 +164,12 @@
     ></script>
 
     <!-- 4 : TextGeneration -->
-    <script src="./projectScripts/textGenerationScript.js"></script>
+    <script src="./js/textGenerationScript.js"></script>
     <!-- 5 : graphGeneration :  -->
-    <script src="./projectScripts/graphGeneratorScript.js"></script>
+    <script src="./js/graphGeneratorScript.js"></script>
 
     <!-- 8 : confettie effect -->
-    <script src="./projectScripts/finishAnimation.js"></script>
+    <script src="./js/finishAnimation.js"></script>
     <!-- the css of this confettie is in the mainContainerStyle -->
   </body>
 </html>
