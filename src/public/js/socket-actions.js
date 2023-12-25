@@ -209,7 +209,7 @@ async function startTheGame() {
   // To avoid multiple clicks that will trigger more startTheGame functions
   temp.disabled = true;
 
-  await textGenerator();
+  sentenceText = await textGenerator();
 
   socket.emit('gameStarted', playerName, roomName, sentenceText);
 
