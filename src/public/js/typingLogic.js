@@ -25,28 +25,41 @@ let PlayerData,
   graphdata,
   chartCreated = false;
 
+let preInput = '';
+
 // The initialStructure is async as we will wait for the api to respond and then store it in the variable.
 (function initialStructure() {
   // Waiting for the onRestart function to End.
   onRestartCondition();
 
   // Initializing the event listener for key events.
-  textInput.addEventListener('keydown', (e) => {
+  textInput.addEventListener('input', (e) => {
     // if (!typingStarted) typingStartedCondition(); // Condtion to check if Typing is Started.
 
-    let letterTyped = '';
-    if (e.key) {
-      letterTyped = e.key;
+    let letterTyped = e.data || '';
+    let inputType = null;
+
+    if (preInput.length > letterTyped.length) {
+      inputType = 'deleteContentBackward';
+    } else if (!letterTyped && preInput.length > 0) {
+      inputType = 'deleteContentBackward';
     } else {
-      const code = e.which || e.keyCode;
-      letterTyped = String.fromCharCode(code);
+      inputType = e.inputType;
+    }
+
+    if (letterTyped.length > 1 && preInput.length === letterTyped.length) {
+      letterTyped = null;
+    }
+
+    if (letterTyped) {
+      letterTyped = e.data.slice(-1);
     }
 
     // Function to check if the key pressed is right or wrong and perform further actions.
-    checkKeyCondition(letterTyped, e);
+    checkKeyCondition(letterTyped, inputType);
 
     // Checking if the word ended and also all the previous words are correctly typed.
-    if (e.key == ' ' && backSpacesRequired === 0) {
+    if (letterTyped == ' ' && backSpacesRequired === 0) {
       recordGraphData(); // Records the data for every word in the graph.
 
       // Reseting the textInput and also the current word.
@@ -54,6 +67,7 @@ let PlayerData,
       currentWordTyping = [];
     }
 
+    preInput = e.data || '';
     refreshWindow();
   });
 
@@ -122,13 +136,13 @@ function typingStartedCondition() {
 }
 
 // Function to check the key entered and take action accordingly.
-function checkKeyCondition(letterTyped, e) {
+function checkKeyCondition(letterTyped, inputType) {
   if (letterTyped === sentenceText[index]) {
     currentWordTyping.push(letterTyped);
     correctKeyConditionHandle();
     return;
   }
-  wrongKeyConditionHandle(letterTyped, e);
+  wrongKeyConditionHandle(letterTyped, inputType);
 }
 
 // Function to handel,if the key is correct.
@@ -150,18 +164,22 @@ function correctKeyConditionHandle() {
 }
 
 // Function to handel,if the key is wrong.
-function wrongKeyConditionHandle(letterTyped, e) {
-  if (letterTyped == 'Backspace') {
+function wrongKeyConditionHandle(letterTyped, inputType) {
+  if (inputType === 'deleteContentBackward') {
+    currentWordTyping.pop();
+    backScpaceConditionHandle();
+  } else if (inputType === 'deleteWordBackward') {
     currentWordTyping.pop();
     backScpaceConditionHandle();
 
-    if (e.ctrlKey) deleteWholeWord();
+    deleteWholeWord();
   } else if (
-    letterTyped == 'Control' ||
-    letterTyped == 'Shift' ||
-    letterTyped == 'CapsLock' ||
-    letterTyped == 'Enter' ||
-    letterTyped == 'Tab'
+    letterTyped === 'Control' ||
+    letterTyped === 'Shift' ||
+    letterTyped === 'CapsLock' ||
+    letterTyped === 'Enter' ||
+    letterTyped === 'Tab' ||
+    letterTyped === null
   ) {
     return;
   } else {
