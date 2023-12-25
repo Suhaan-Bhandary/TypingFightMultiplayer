@@ -124,7 +124,7 @@ module.exports = (io, socket) => {
       !socketData.isGameInProgress(roomName)
     ) {
       socketData.endGame(roomName);
-      const hostId = getRoomHostId(roomName);
+      const hostId = socketData.getRoomHostId(roomName);
       io.to(hostId).emit('showStartButton');
     }
   };
