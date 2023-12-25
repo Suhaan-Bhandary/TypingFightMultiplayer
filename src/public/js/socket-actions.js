@@ -49,7 +49,6 @@ socket.on('roomExists', () => {
   roomTitle.textContent = roomName;
   svgContainerChat.classList.remove('hide');
   setTimeout(() => {
-    console.log('animation');
     animItemChat.goToAndPlay(0, true);
   }, 500); // to play the animation.)
 });
@@ -93,8 +92,6 @@ socket.on('set-room-data', (playersInRoom) => {
 
     playersInRoomContainer.appendChild(temp);
   }
-
-  console.table(playersInRoom);
 });
 
 // * on kick
@@ -138,7 +135,6 @@ socket.on('chat-message', (message, sender) => {
 });
 
 const showMessageInPopup = (message, sender) => {
-  console.log('popip');
   popUpChatMessageContainer = document.querySelector('.messagePopUp');
 
   popUpChatMessageContainer.innerHTML = `<h4>${sender.toUpperCase()} : </h4><p>${message}</p>`;
@@ -147,7 +143,6 @@ const showMessageInPopup = (message, sender) => {
 
   setTimeout(() => {
     popUpChatMessageContainer.style.right = '-350px';
-    console.log(message, sender);
   }, 2500);
 };
 
@@ -171,7 +166,6 @@ socket.on('refreshGraph', (players) => {
   for (const value of Object.values(players)) {
     if (Object.keys(value.playerData) != 0) {
       allData.push(value.playerData);
-      console.table(value);
     }
   }
 
@@ -208,8 +202,6 @@ async function startTheGame() {
 }
 
 socket.on('gameStartedCondition', (text) => {
-  console.log('gameStarted');
-
   sentenceText = text;
 
   const countDownElement = document.querySelector('.countDownContainer');

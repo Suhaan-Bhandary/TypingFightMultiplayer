@@ -34,8 +34,16 @@ let PlayerData,
   textInput.addEventListener('keydown', (e) => {
     // if (!typingStarted) typingStartedCondition(); // Condtion to check if Typing is Started.
 
+    let letterTyped = '';
+    if (e.key) {
+      letterTyped = e.key;
+    } else {
+      const code = e.which || e.keyCode;
+      letterTyped = String.fromCharCode(code);
+    }
+
     // Function to check if the key pressed is right or wrong and perform further actions.
-    checkKeyCondition(e);
+    checkKeyCondition(letterTyped, e);
 
     // Checking if the word ended and also all the previous words are correctly typed.
     if (e.key == ' ' && backSpacesRequired === 0) {
@@ -107,7 +115,6 @@ function typingStartedCondition() {
   startTime = new Date();
   previousTime = startTime;
 
-  console.log('Started typing');
   typingStarted = true;
 
   // const chatRoom = document.querySelector(".chatRoom");
@@ -115,13 +122,13 @@ function typingStartedCondition() {
 }
 
 // Function to check the key entered and take action accordingly.
-function checkKeyCondition(e) {
-  if (e.key === sentenceText[index]) {
-    currentWordTyping.push(e.key);
+function checkKeyCondition(letterTyped, e) {
+  if (letterTyped === sentenceText[index]) {
+    currentWordTyping.push(letterTyped);
     correctKeyConditionHandle();
     return;
   }
-  wrongKeyConditionHandle(e);
+  wrongKeyConditionHandle(letterTyped, e);
 }
 
 // Function to handel,if the key is correct.
@@ -143,9 +150,7 @@ function correctKeyConditionHandle() {
 }
 
 // Function to handel,if the key is wrong.
-function wrongKeyConditionHandle(e) {
-  letterTyped = e.key;
-
+function wrongKeyConditionHandle(letterTyped, e) {
   if (letterTyped == 'Backspace') {
     currentWordTyping.pop();
     backScpaceConditionHandle();
@@ -212,7 +217,6 @@ function regularWrongConditionHandle() {
 
 // Function to handel the case when typing is started.
 function endCondition() {
-  console.log('hi every one');
   endTime = new Date();
 
   // Recording the last word and then generation the graphdata using the graphdata variable.
