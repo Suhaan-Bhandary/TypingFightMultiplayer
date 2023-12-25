@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,13 +36,13 @@
     <!-- ? All Internal links and Scripts -->
     <!-- 0 : Client side server setup -->
     <script src="/socket.io/socket.io.js"></script>
-    <script defer src="./js/clientSideScript.js"></script>
+    <script defer src="./js/socket-actions.js"></script>
     <link rel="stylesheet" href="./css/default.css" />
 
     <!-- 1 : selectionMenuContainer -->
     <link rel="stylesheet" href="./css/selectionMenuStyle.css" />
     <link rel="stylesheet" href="./css/buttonStyle.css" />
-    <script defer src="./js/selectionMenuScript.js"></script>
+    <script defer src="./js/UI/selectionMenu.js"></script>
 
     <!-- 2 : Chat Room : -->
     <link rel="stylesheet" href="./css/chatRoom.css" />
@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="./css/graphStyle.css" />
 
     <!-- 6 : mainContainer -->
-    <script defer src="./js/mainContainerScript.js"></script>
+    <script defer src="./js/typingLogic.js"></script>
     <link rel="stylesheet" href="./css/mainContainerStyle.css" />
 
     <!-- 7 : countdown -->
@@ -164,12 +164,13 @@
     ></script>
 
     <!-- 4 : TextGeneration -->
-    <script src="./js/textGenerationScript.js"></script>
+    <script src="./js/utils/generateText.js"></script>
+
     <!-- 5 : graphGeneration :  -->
-    <script src="./js/graphGeneratorScript.js"></script>
+    <script src="./js/graphGenerator.jss"></script>
 
     <!-- 8 : confettie effect -->
-    <script src="./js/finishAnimation.js"></script>
+    <script src="./js/UI/confettieEffect.js"></script>
     <!-- the css of this confettie is in the mainContainerStyle -->
   </body>
 </html>
