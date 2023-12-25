@@ -1,19 +1,10 @@
+'use strict';
+
+const Room = require('./objects/Room');
+const Player = require('./objects/Player');
+
 // Configuration for the Game
 let rooms = {};
-
-var Room = function (name, hostName) {
-  this.host = hostName;
-  this.roomName = name;
-  this.gameStarted = false;
-  this.players = {};
-};
-
-var Player = function (name, playerId) {
-  this.playerName = name;
-  this.playerId = playerId;
-  this.playerData = {};
-  this.playerFinished = false;
-};
 
 module.exports = (io, socket) => {
   const playerDisconnected = () => {
